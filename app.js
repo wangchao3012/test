@@ -1,4 +1,7 @@
-const Koa=require('Koa');
+
+import Koa from 'Koa'
+
+// const Koa=require('Koa');
 const app=new Koa();
 
 app.use(ctx=>{
