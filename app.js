@@ -1,5 +1,5 @@
 
-import Koa from 'Koa'
+import Koa from 'koa'
 
 // const Koa=require('Koa');
 const app=new Koa();
