@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/es6.js"],"names":["a","b","c","console","log"],"mappings":"iBAAKA,C,GAAU,C,CAARC,C,GAAU,C,CAARC,C,GAAU,C;AACnBC,QAAQC,GAAR,CAAYJ,CAAZ,EAAcC,CAAd,EAAgBC,CAAhB","file":"es6.js","sourcesContent":["let [a,b,c] = [1,2,3];\r\nconsole.log(a,b,c);"]}
