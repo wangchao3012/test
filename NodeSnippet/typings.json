@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "koa": "registry:npm/koa#2.0.0+20161018080506",
+    "sequelize": "registry:npm/sequelize#4.0.0-1+20161101121248"
+  }
+}

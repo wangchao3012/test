@@ -8,8 +8,19 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/app.js",
+            "program": "${workspaceRoot}/src/app.js",
             "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "es6",
+            "program": "${workspaceRoot}/src/es6.js",
+            "cwd": "${workspaceRoot}",
+            "skipFiles": [
+                "node_modules/**/*.js"
+            ],
+            "envFile": "${workspaceRoot}/.env"
         },
         {
             "type": "node",
