@@ -1,8 +1,16 @@
 /// <reference path="../../NodeSnippet/typings/index.d.ts" />
 'use strict'
-module.exports=function(sequelize,DataTypes){
 
+module.exports = function (sequelize, DataTypes) {
+    return sequelize.define('role', {
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV1
+        },
+        name: {
+            type: DataTypes.STRING
+        }
+    });
 };
-
-const Koa=require('koa');
-const app=new Koa();

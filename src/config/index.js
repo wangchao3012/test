@@ -1,4 +1,9 @@
-{
+
+
+
+'use strict'
+
+var all ={
     "port": 3000,
     "mysql": {
         "dbname": "test",
@@ -19,4 +24,6 @@
             }
         }
     }
-}
+};
+
+module.exports = all;
