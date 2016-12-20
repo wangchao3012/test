@@ -1,16 +1,12 @@
-
-
-
-'use strict'
-
-var all ={
+{
     "port": 3000,
     "mysql": {
-        "dbname": "test",
+        "dbname": "test_test",
         "user": "root",
         "password": "1qaz@WSX",
         "options": {
-            "host": "10.25.24.72",
+            "host": "192.168.16.129",
+            //   "host": "10.25.24.72",
             "port": 3306,
             "dialect": "mysql",
             "pool": {
@@ -24,6 +20,4 @@ var all ={
             }
         }
     }
-};
-
-module.exports = all;
+}

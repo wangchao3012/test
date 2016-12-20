@@ -15,18 +15,22 @@
             "type": "node",
             "request": "launch",
             "name": "es6",
-            "program": "${workspaceRoot}/src/es6.js",
+            "program": "${workspaceRoot}/src/index.js",
             "cwd": "${workspaceRoot}",
             "skipFiles": [
                 "node_modules/**/*.js"
             ],
-            "envFile": "${workspaceRoot}/.env"
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "附加到进程",
-            "port": 3000
+            // "envFile": "${workspaceRoot}/.env"
+            "env":{
+                "NODE_ENV":"prod"
+            }
         }
+        // ,
+        // {
+        //     "type": "node",
+        //     "request": "attach",
+        //     "name": "附加到进程",
+        //     "port": 3000
+        // }
     ]
 }

@@ -2,6 +2,7 @@
 'use strict'
 
 module.exports = function (sequelize, DataTypes) {
+
     return sequelize.define('role', {
         id: {
             type: DataTypes.UUID,
@@ -14,3 +15,20 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 };
+
+module.exports = function (sequelize, DataTypes) {
+
+    return sequelize.define('role', {
+        name: {
+            type: DataTypes.STRING
+        }
+    });
+};
+module.exports = function (sequelize, DataTypes) {
+    return sequelize.define('className', {
+        colName: {
+            type: DataTypes.STRING
+        }
+    });
+};
+ 
