@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/model/menu.js"],"names":["console","log"],"mappings":"aAACA,QAAQC,GAAR,CAAY,EAAZ","file":"menu.js","sourcesContent":[" console.log('');\r\n "]}

@@ -8,21 +8,27 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/src/app.js",
+            "program": "${workspaceRoot}/src/es6.js",
             "cwd": "${workspaceRoot}"
         },
         {
             "type": "node",
+            "runtimeArgs": [
+                "--harmony-async-await"
+            ],
+            "args": [
+                "--harmony-async-await"
+            ],
             "request": "launch",
-            "name": "es6",
+            "name": "index",
             "program": "${workspaceRoot}/src/index.js",
             "cwd": "${workspaceRoot}",
             "skipFiles": [
                 "node_modules/**/*.js"
             ],
             // "envFile": "${workspaceRoot}/.env"
-            "env":{
-                "NODE_ENV":"prod"
+            "env": {
+                "NODE_ENV": "prod"
             }
         }
         // ,
