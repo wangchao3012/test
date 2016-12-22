@@ -28,7 +28,27 @@
             ],
             // "envFile": "${workspaceRoot}/.env"
             "env": {
-                "NODE_ENV": "prod"
+                "NODE_ENV": "test"
+            }
+        },
+        {
+            "type": "node",
+            "runtimeArgs": [
+                "--harmony-async-await"
+            ],
+            "args": [
+                "--harmony-async-await"
+            ],
+            "request": "launch",
+            "name": "test",
+            "program": "${workspaceRoot}/src/test/test.js",
+            "cwd": "${workspaceRoot}",
+            "skipFiles": [
+                "node_modules/**/*.js"
+            ],
+            // "envFile": "${workspaceRoot}/.env"
+            "env": {
+                "NODE_ENV": "test"
             }
         }
         // ,
