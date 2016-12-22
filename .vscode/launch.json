@@ -20,8 +20,8 @@
                 "--harmony-async-await"
             ],
             "request": "launch",
-            "name": "index",
-            "program": "${workspaceRoot}/src/index.js",
+            "name": "app",
+            "program": "${workspaceRoot}/src/app.js",
             "cwd": "${workspaceRoot}",
             "skipFiles": [
                 "node_modules/**/*.js"
