@@ -1,42 +1,63 @@
 
+'use strict'
 
-// import Koa from 'Koa'
+const Koa = require('koa');
+const app = new Koa();
 
-// // const Koa=require('Koa');
-// const app=new Koa();
-
-// app.use(ctx=>{
-//     ctx.body='练习使用Koa'; 
-// });
-// app.listen(3000);
-
-// var sqldb = require('./sqldb');
-// sqldb.sequelize.sync({force: false}).then(function() {
-//     console.log("Server successed to start");
-// }).catch(function(err){
-//     console.log("Server failed to start due to error: %s", err);
-// });
+const convert = require('koa-convert');
+var config = require('config');
 
 
-var Sequelize = require('sequelize');
-var db = new Sequelize('test', 'root', '1qaz@WSX', {
-    host: '10.25.24.72',
-    port: 3306,
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 1
-    },
-    define: {
-        freezeTableName: true,//模型名是否和数据库名称相同
-        paranoid: true,//是否标记删除
-        timestamps: true,//是否标记删除 
-    }
-}); 
-db.User = db.import('./model/user.js');
-db.Role = db.import('./model/role.js');
-db.sync({ force: false }).then(function () {
+console.log('当前连接数据库名:::' + config.mysql.dbname)
+const Sequelize = require('sequelize');
+const db = {
+    sequelize: new Sequelize(config.mysql.dbname, config.mysql.user, config.mysql.password, config.mysql.options),
+}
+
+db.User = db.sequelize.import('./model/user.js');
+
+
+db.sequelize.sync({ force: false }).then(function () {
+
     console.log("服务启动成功");
+    var dmu = {
+        name: '张三' + new Date().getTime()
+    };
+    db.User.create(dmu).then(function (user) {
+        console.log('添加用户：' + JSON.stringify(dmu));
+    });
 }).catch(function (err) {
     console.log("服务启动失败: %s", err);
 });
+
+
+// http 参数解析
+const bodyparser = require('koa-bodyparser')();
+app.use(convert(bodyparser));
+
+
+app.use(async (ctx, next) => {
+    // ctx.request.body
+    await next();
+    // await db.User.findOne({ id: 2 }).then(function (res) {
+    //     console.log('user:' + JSON.stringify(res.dataValues));
+    //     console.log('par:::' + ctx.request.body);
+
+    //     ctx.body = JSON.stringify(res.dataValues);
+    // }).catch(err => {
+    //     ctx.body = err
+    // });
+});
+
+
+const api = require('./route/api.js');
+
+app.use(api.routes(), api.allowedMethods());
+
+app.on('error', (err, ctx) => {
+    console.error('err:' + JSON.stringify(err));
+});
+
+app.listen(config.port);
+
+module.exports = app;
