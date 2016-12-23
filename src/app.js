@@ -34,11 +34,12 @@ db.sequelize.sync({ force: false }).then(function () {
 // http 参数解析
 const bodyparser = require('koa-bodyparser')();
 app.use(convert(bodyparser));
-
+const tool = require('./common/tool')
 
 app.use(async (ctx, next) => {
+    await checkAuth(ctx.request.body);
     // ctx.request.body
-    await next();
+    // await next();
     // await db.User.findOne({ id: 2 }).then(function (res) {
     //     console.log('user:' + JSON.stringify(res.dataValues));
     //     console.log('par:::' + ctx.request.body);
@@ -48,11 +49,20 @@ app.use(async (ctx, next) => {
     //     ctx.body = err
     // });
 });
+const defaultToken = config.app.defaultToken;
+const noCheckToken = ['user.login', 'user.register'];
+const cache = require('./common/cache')
+var checkAuth = async function (cr) {
+    var bb = await cache.set2();
+    if (cr.test || (noCheckToken.indexOf != -1 && tool.checkSign(defaultToken))) {
+        return true;
+    }
+    else {
 
+        // tool.checkToken(ctx.request.body)
+    }
+}
 
-const api = require('./route/api.js');
-
-app.use(api.routes(), api.allowedMethods());
 
 app.on('error', (err, ctx) => {
     console.error('err:' + JSON.stringify(err));
