@@ -1,5 +1,8 @@
 {
     "port": 3000,
+    "app": {
+        "defaultToken": "E07657CD6002B363"
+    },
     "mysql": {
         "dbname": "test_test",
         "user": "root",
@@ -21,5 +24,16 @@
                 // "defaultValue":""
             }
         }
+    },
+    "ssdb": {
+        "host": "192.168.16.129",
+        "port": 8888,
+        "auth": "undefined", // ssdb server auth password
+        //authCallback: function (err, data) { if (err) throw err; },  // callback function on auth
+        "size": 1, // connection pool size
+        "timeout": 0,
+        "promisify": true, // make api methods promisify.
+        "thunkify": false // make api methods thunkify.
+        // policy: Pool.policies.round_robin,
     }
 }

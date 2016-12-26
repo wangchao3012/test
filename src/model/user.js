@@ -1,6 +1,6 @@
 'use strict'
 module.exports = function (sequelize, DataTypes) {
-    var User = sequelize.define('user', {
+    return sequelize.define('user', {
         // id:{
         //     type:DataTypes.INTEGER,
         //     primaryKey:true,
@@ -8,22 +8,49 @@ module.exports = function (sequelize, DataTypes) {
         //     autoIncrement:true 
         // },
         name: {
-            type: DataTypes.STRING
+            comment: '姓名',
+            type: DataTypes.STRING,
+            defaultValue: ''
         },
-        age: {
-            type: DataTypes.INTEGER
+        openId: {
+            type: DataTypes.STRING,
+            defaultValue: ''
         },
-        sex: {
-            type: DataTypes.INTEGER
+        userName: {
+            type: DataTypes.STRING,
+            defaultValue: ''
         },
-        height: {
-            type: DataTypes.INTEGER
+        loweredUserName: {
+            type: DataTypes.STRING,
+            defaultValue: ''
         },
-        weight: {
-            type: DataTypes.INTEGER
-        }
-    }, {
-            freezeTableName: true
-        });
-    return User;
+        head: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        mobile: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        roleIds: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        roleNames: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        salt: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        password: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+        email: {
+            type: DataTypes.STRING,
+            defaultValue: ''
+        },
+    });
 };

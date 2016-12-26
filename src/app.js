@@ -8,7 +8,6 @@ const convert = require('koa-convert');
 var config = require('config');
 const cache = require('./common/cache');
 
-console.log('当前连接数据库名:::' + config.mysql.dbname)
 
 
 
@@ -63,7 +62,6 @@ var sr = {
 const defaultToken = config.app.defaultToken;
 const noCheckToken = ['user.login', 'user.register'];
 
-const uuid = require('uuid/v4');
 
 var checkAuth = async function (cr) {
 
@@ -89,4 +87,8 @@ app.on('error', (err, ctx) => {
 
 app.listen(config.port);
 
+console.log('服务启动成功:' + config.port)
 module.exports = app;
+
+const db = require('./service/db');
+db.sync();

@@ -41,7 +41,7 @@
             ],
             "request": "launch",
             "name": "test",
-            "program": "${workspaceRoot}/src/test/test.js",
+            "program": "${workspaceRoot}/src/app.js",
             "cwd": "${workspaceRoot}",
             "skipFiles": [
                 "node_modules/**/*.js"

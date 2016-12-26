@@ -1,4 +1,6 @@
-const db = require('../db')
+const db = require('../db') 
+const uuid = require('uuid/v4');
+
 let User = {
     login: async function (m) {
         var mu = await db.findById({ model: 'user11', id: m.id });

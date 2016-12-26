@@ -1,18 +1,6 @@
 const ssdb = require('ssdb');
-
-const pool = ssdb.createPool(
-    {
-        host: '127.0.0.1',
-        port: 8888,
-        auth: undefined,  // ssdb server auth password
-        authCallback: function (err, data) { if (err) throw err; },  // callback function on auth
-        size: 1,  // connection pool size
-        timeout: 0,
-        promisify: true,  // make api methods promisify.
-        thunkify: false,  // make api methods thunkify.
-        // policy: Pool.policies.round_robin,
-    }
-);
+const config = require('config');
+const pool = ssdb.createPool(config.ssdb);
 
 var cache = {
     key: {
