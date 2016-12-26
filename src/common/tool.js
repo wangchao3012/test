@@ -1,22 +1,22 @@
 
 const md5 = require('md5');
 var tool = {
-    checkSign: function (obj,token) {
-        let keys = [];
-        for (var item in obj) {
-            keys.push(item)
-        }
-        keys = keys.sort(function (a, b) {
-            return a.toLowerCase() > b.toLowerCase() ? 1 : -1
-        });
+    signJoin: function (obj, token) {
         // 生成加密 
         let content = '';
-        for (var i = 0; i < keys.length; i++) {
-            let key = keys[i];
+        for (var key of Object.keys(obj).sort()) {
             let value = obj[key];
-            value != undefined && value != null && value !== '' && (content += key + value)
+            key != 'si' && value != undefined && value != null && value !== '' && (content += key + value)
         }
-        return obj.sign == md5(content)
+        return content;
+
+        // keys = keys.sort(function (a, b) {
+        //     return a.toLowerCase() > b.toLowerCase() ? 1 : -1
+        // }); 
+    },
+    checkSign: function (obj, token) {
+
+        return obj.sign == md5(this.signJoin(obj, token))
     }
 };
 module.exports = tool;

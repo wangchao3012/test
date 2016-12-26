@@ -17,6 +17,8 @@
                 "freezeTableName": true, //模型名是否和数据库名称相同
                 "paranoid": true, //是否标记删除
                 "timestamps": true //是否标记删除 
+                // "allowNull":false
+                // "defaultValue":""
             }
         }
     }
