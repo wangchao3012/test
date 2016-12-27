@@ -1,14 +1,13 @@
 'use strict'
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('user', {
-        // id:{
-        //     type:DataTypes.INTEGER,
-        //     primaryKey:true,
-        //     // allowNull:false,
-        //     autoIncrement:true 
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     primaryKey: true,
+        //     allowNull: false,
+        //     autoIncrement: true
         // },
         name: {
-            comment: '姓名',
             type: DataTypes.STRING,
             defaultValue: ''
         },

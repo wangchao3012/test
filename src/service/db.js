@@ -4,7 +4,9 @@ var db = {
     sequelize: new Sequelize(config.mysql.dbname, config.mysql.user, config.mysql.password, config.mysql.options),
     findById: async function (par) {
         let {model, id} = par;
-        return await this.sequelize.model(model).findById(id).then(res => { return res.dataValues });
+        return await this.sequelize.model(model).findById(id).then(res => {
+            return res ? res.dataValues : res;
+        });
     }
 }
 db.User = db.sequelize.import('../model/user');

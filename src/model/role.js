@@ -1,6 +1,12 @@
 'use strict'
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('role', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            allowNull: false,
+            autoIncrement: true
+        },
         name: {
             type: DataTypes.STRING,
             defaultValue: ''

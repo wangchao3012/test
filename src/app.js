@@ -8,27 +8,23 @@ const convert = require('koa-convert');
 var config = require('config');
 const cache = require('./common/cache');
 
-
-
-
-
 // http 参数解析
 const bodyparser = require('koa-bodyparser')();
 app.use(convert(bodyparser));
+
 const tool = require('./common/tool');
-var service = {};
-// const user=require('./service/account/user')
+
+ 
+
 app.use(async (ctx, next) => {
+
     let cr = ctx.request.body;
     var sr = await checkAuth(cr);
     if (sr.sc == statusCode.成功) {
         var arr = cr.m.split('.');
         var cla = require('./service/' + arr[0] + '/' + arr[1]);
         try {
-
             sr.d = await cla[arr[2]](cr.d);
-
-
         } catch (err) {
             if (err.stack) {
                 sr.msg = '服务器异常，请稍后重试';

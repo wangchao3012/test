@@ -17,6 +17,16 @@ var tool = {
     checkSign: function (obj, token) {
 
         return obj.sign == md5(this.signJoin(obj, token))
+    }, get1: function (m) {
+        this = m;
+    },
+    isNull: function (msg) {
+        if (!this) {
+            throw msg;
+        }
+        return this;
     }
 };
+
+
 module.exports = tool;
