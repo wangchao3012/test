@@ -14,7 +14,7 @@ app.use(convert(bodyparser));
 
 const tool = require('./common/tool');
 
- 
+
 
 app.use(async (ctx, next) => {
 
@@ -26,6 +26,7 @@ app.use(async (ctx, next) => {
         try {
             sr.d = await cla[arr[2]](cr.d);
         } catch (err) {
+            console.log('err::', err)
             if (err.stack) {
                 sr.msg = '服务器异常，请稍后重试';
                 sr.sc = statusCode.系统错误;

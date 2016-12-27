@@ -1,13 +1,16 @@
 const db = require('../db')
 const uuid = require('uuid/v4');
 
- 
+
 const rp = require('request-promise');
-const tool = require('../../common/tool')
+const tool = require('../../common/tool');
+const exc = require('../../common/exc');
+
 let User = {
     login: async function (m) {
         var mu = await db.findById({ model: 'user', id: m.id });
-        var bb = tool.get(mu).isNull('用户不存在');
+        exc.set(mu).isNull('ssssss');
+        // var bb = tool.get(mu).isNull('用户不存在');
         // mu.isNull22('用户不存在')
         // throw '用户不存在'
         console.log('m::', m, mu);
