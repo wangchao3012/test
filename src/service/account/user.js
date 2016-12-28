@@ -14,7 +14,8 @@ let User = {
             //用户名密码登录
             case 1:
                 mu = await db.findOne({
-                    m: 'user', opt: {
+                    m: 'user',
+                    opt: {
                         where: {
                             $or: [
                                 {
@@ -33,7 +34,7 @@ let User = {
             // 手机号密码登录
             case 2:
 
- 
+
                 break;
             // 第三方登录
             case 3:
@@ -42,7 +43,7 @@ let User = {
                 break;
             default:
                 break;
-        } 
+        }
 
         // await db.sequelize.model('user').findOne({
         //     where: {

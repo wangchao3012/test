@@ -24,7 +24,8 @@ app.use(async (ctx, next) => {
         var arr = cr.m.split('.');
         var cla = require('./service/' + arr[0] + '/' + arr[1]);
         try {
-            sr.d = await cla[arr[2]](cr.d);
+            sr.d = await new cla()[arr[2]](cr.d);
+            // sr.d = await new cla[arr[2]]()(cr.d);
         } catch (err) {
             console.log('err::', err)
             if (err.stack) {
@@ -88,5 +89,5 @@ app.listen(config.port);
 console.log('服务启动成功:' + config.port)
 module.exports = app;
 
-const db = require('./service/db');
-db.sync();
+// const db = require('./service/dbLog');
+// new db.sync();
