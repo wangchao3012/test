@@ -20,7 +20,7 @@
                 "--harmony-async-await"
             ],
             "request": "launch",
-            "name": "app",
+            "name": "prod",
             "program": "${workspaceRoot}/src/app.js",
             "cwd": "${workspaceRoot}",
             "skipFiles": [

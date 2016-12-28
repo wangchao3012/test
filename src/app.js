@@ -38,6 +38,7 @@ app.use(async (ctx, next) => {
                 });
             } else {
                 sr.msg = err;
+                sr.sc = statusCode.失败;
             }
         }
     }
