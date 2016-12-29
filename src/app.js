@@ -94,3 +94,5 @@ const dbAccount = require('./service/dbAccount');
 new dbAccount().sync();
 const dbLog = require('./service/dbLog');
 new dbLog().sync();
+
+ 
