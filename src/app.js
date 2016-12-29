@@ -15,17 +15,18 @@ app.use(convert(bodyparser));
 const tool = require('./common/tool');
 
 
-
+// let service = require('./service/index');
 app.use(async (ctx, next) => {
 
     let cr = ctx.request.body;
     var sr = await checkAuth(cr);
     if (sr.sc == statusCode.成功) {
         var arr = cr.m.split('.');
+        // require('./service/' + arr[0] + '/' + arr[1]);
         var cla = require('./service/' + arr[0] + '/' + arr[1]);
         try {
+            // sr.d = await service(arr[1])[arr[2]](cr.d);
             sr.d = await new cla()[arr[2]](cr.d);
-            // sr.d = await new cla[arr[2]]()(cr.d);
         } catch (err) {
             console.log('err::', err)
             if (err.stack) {
@@ -89,5 +90,7 @@ app.listen(config.port);
 console.log('服务启动成功:' + config.port)
 module.exports = app;
 
-// const db = require('./service/dbLog');
-// new db.sync();
+const dbAccount = require('./service/dbAccount');
+new dbAccount().sync();
+const dbLog = require('./service/dbLog');
+new dbLog().sync();

@@ -5,8 +5,8 @@
         "defaultPwdSalt": "E07657CD6002B363"
     },
     "mysql": {
-        "user": {
-            "dbname": "xz_test_user",
+        "account": {
+            "dbname": "xz_test_account",
             "user": "root",
             "password": "1qaz@WSX",
             "options": {

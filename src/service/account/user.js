@@ -1,4 +1,4 @@
-const db = require('../db')
+const dbAccount = require('../dbAccount')
 const uuid = require('uuid/v4');
 
 
@@ -6,14 +6,16 @@ const rp = require('request-promise');
 const tool = require('../../common/tool');
 // const exc = new exc1();
 
-let User = {
-
-    login: async function (d) {
+class user extends dbAccount {
+    constructor() {
+        super();
+    }
+    async   login(d) {
         var mu;
         switch (d.type) {
             //用户名密码登录
             case 1:
-                mu = await db.findOne({
+                mu = await this.findOne({
                     m: 'user',
                     opt: {
                         where: {
@@ -28,6 +30,7 @@ let User = {
 
                     }
                 });
+
                 console.log('mu::', mu);
                 tool(mu).notNull('用户不存在').notNull('用户名或密码错误');
                 break;
@@ -61,8 +64,8 @@ let User = {
 
         // }); 
         return mu
-    },
-    getWXAccessToken: async function (m) {
+    };
+    async    getWXAccessToken(m) {
         var aa = await rp('https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code')
             .then(function (res) {
                 console.log('res::', res);
@@ -74,7 +77,7 @@ let User = {
             });
         console.log('res::', response);
     }
-
 }
-module.exports = User;
+
+module.exports = user;
 

@@ -18,5 +18,6 @@ class dbBase {
             return res ? res.dataValues : res;
         });
     }
+   
 }
 module.exports = dbBase;
