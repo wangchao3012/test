@@ -1,6 +1,7 @@
 'use strict'
 // 第三方用户信息
-module.exports = function (sequelize, DataTypes) {
+const User = require('./user')
+var ThreeUser = function (sequelize, DataTypes) {
     return sequelize.define('threeUser', {
         userId: {
             type: DataTypes.INTEGER,
@@ -28,3 +29,6 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 };
+User.hasMany(ThreeUser, { foreignKey: 'userId', targetKey: 'id' });
+
+module.exports = ThreeUser;

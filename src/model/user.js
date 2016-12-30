@@ -1,6 +1,7 @@
 'use strict'
+
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('user', {
+    var User = sequelize.define('user', {
         // id: {
         //     type: DataTypes.INTEGER,
         //     primaryKey: true,
@@ -52,4 +53,5 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: ''
         },
     });
+    return User;
 };

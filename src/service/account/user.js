@@ -5,6 +5,8 @@ const uuid = require('uuid/v4');
 const rp = require('request-promise');
 const tool = require('../../common/tool');
 // const exc = new exc1();
+const User=require('../../model/user');
+const Role=require('../../model/role');
 
 class user extends dbAccount {
     constructor() {
@@ -76,6 +78,9 @@ class user extends dbAccount {
                 // Crawling failed... 
             });
         console.log('res::', response);
+    };
+    async register() {
+//  User
     }
 }
 
